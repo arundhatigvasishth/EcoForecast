@@ -55,13 +55,11 @@ function Outputs() {
 
 export default function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/inputs" element={<InputsPage />} />
-                <Route path="/outputs" element={<Outputs />} />
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/inputs" element={<InputsPage />} />
+            <Route path="/outputs" element={<Outputs />} />
+        </Routes>
     );
 }
 
@@ -80,7 +78,7 @@ const styles = {
         maxWidth: 720,
         padding: 24,
         borderRadius: 16,
-        background: "rgba(255,255,255,0.08)",
+        background: "rgba(0,255,0,0.08)",
         border: "1px solid rgba(255,255,255,0.15)",
         backdropFilter: "blur(10px)",
     },
@@ -91,5 +89,6 @@ const styles = {
         border: "none",
         cursor: "pointer",
         fontWeight: 700,
+        color: "black",
     },
 };
