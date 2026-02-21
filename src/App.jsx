@@ -1,94 +1,58 @@
-import React from "react";
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Link,
-    useNavigate,
-} from "react-router-dom";
-
-// ✅ Import your Inputs page
-// If your file is exactly: src/Pages/Inputs/InputsPage.tsx
-import InputsPage from "./Pages/Inputs/InputsPage";
-
-// Simple Home page with button → Inputs
-function Home() {
-    const navigate = useNavigate();
-
-    return (
-        <div style={styles.page}>
-            <div style={styles.card}>
-                <h1 style={{ marginTop: 0 }}>EcoForecast</h1>
-                <p style={{ opacity: 0.85 }}>
-                    Demo: Estimate clinic sustainability cost impact (quarterly
-                    inputs).
-                </p>
-
-                <button
-                    style={styles.primaryBtn}
-                    onClick={() => navigate("/inputs")}
-                >
-                    Go to Inputs
-                </button>
-
-                {/* Optional: link version */}
-                <div style={{ marginTop: 12 }}>
-                    <Link to="/inputs">Or click here to open Inputs</Link>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// Placeholder Outputs (you can replace later)
-function Outputs() {
-    return (
-        <div style={styles.page}>
-            <div style={styles.card}>
-                <h2 style={{ marginTop: 0 }}>Outputs</h2>
-                <p>Placeholder for now.</p>
-                <Link to="/inputs">Back to Inputs</Link>
-            </div>
-        </div>
-    );
-}
+import React, { useMemo, useState } from "react";
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import Marquee from "./components/Marquee.jsx";
+import Services from "./components/Services.jsx";
+import Offer from "./components/Offer.jsx";
+import Contact from "./components/Contact.jsx";
+import LoginModal from "./components/LoginModal.jsx";
 
 export default function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/inputs" element={<InputsPage />} />
-            <Route path="/outputs" element={<Outputs />} />
-        </Routes>
-    );
-}
+  const [loginOpen, setLoginOpen] = useState(false);
 
-const styles = {
-    page: {
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 24,
-        background: "linear-gradient(135deg, #0b1220, #0f3b2f)",
-        color: "white",
-    },
-    card: {
-        width: "100%",
-        maxWidth: 720,
-        padding: 24,
-        borderRadius: 16,
-        background: "rgba(0,255,0,0.08)",
-        border: "1px solid rgba(255,255,255,0.15)",
-        backdropFilter: "blur(10px)",
-    },
-    primaryBtn: {
-        marginTop: 12,
-        padding: "12px 16px",
-        borderRadius: 10,
-        border: "none",
-        cursor: "pointer",
-        fontWeight: 700,
-        color: "black",
-    },
-};
+  const services = useMemo(
+    () => [
+      {
+        title: "Comprehensive Digital Campaigns",
+        desc: "Creating holistic digital strategies that convert attention into growth.",
+        tone: "lavender",
+      },
+      {
+        title: "SEO Mastery",
+        desc: "Boosting your site on search engines with practical, measurable wins.",
+        tone: "mint",
+      },
+      {
+        title: "Targeted Advertisement",
+        desc: "Maximizing ROI through precise targeting and clear creative direction.",
+        tone: "cream",
+      },
+    ],
+    []
+  );
+
+  return (
+    <div className="min-h-screen">
+      <Navbar onOpenLogin={() => setLoginOpen(true)} />
+
+      <main>
+        <Hero />
+        <Marquee text="Creative / Content Strategy / Branding /" />
+        <Services items={services} />
+        <Offer />
+        <Contact />
+      </main>
+
+      <footer className="border-t border-black/10 bg-[#f4f1ea]">
+        <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="text-sm text-black/70">
+            © {new Date().getFullYear()} TRADEMARK® — All rights reserved.
+          </div>
+          <div className="text-sm text-black/70">Built with React + Tailwind</div>
+        </div>
+      </footer>
+
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+    </div>
+  );
+}
