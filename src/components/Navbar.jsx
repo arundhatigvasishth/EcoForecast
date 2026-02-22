@@ -41,7 +41,7 @@ export default function Navbar({ onOpenLogin, isLoggedIn, setIsLoggedIn }) {
 
               {isLoggedIn && (
                 <Link
-                  to="/company"
+                  to="/inputs"
                   className="hover:underline underline-offset-8"
                 >
                   My Company
