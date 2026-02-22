@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { QuarterlyInputs, QuarterInputs } from "./types";
 import { DEFAULT_QUARTER_INPUTS } from "./types";
-import { save4QuartersToMongo } from "./api";
+import { save4QuartersToMongo } from "./API";
 import {
     validateInputs,
     toNumberOrNull,
@@ -202,7 +202,7 @@ export default function InputsPage() {
             <div
                 style={{
                     marginTop: 18,
-                    border: "1px solid #eee",
+                    border: "1px solid #080808",
                     borderRadius: 10,
                     padding: 14,
                 }}
@@ -216,14 +216,29 @@ export default function InputsPage() {
             </div>
 
             <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
-                <button onClick={onClear} disabled={saving}>
-                    Clear
-                </button>
-                <button onClick={onSave} disabled={saving}>
-                    {saving ? "Saving..." : "Save & Continue"}
-                </button>
-            </div>
+    <button onClick={onClear} disabled={saving}>
+        Clear
+    </button>
+
+    <button onClick={onSave} disabled={saving}>
+        {saving ? "Saving..." : "Save & Continue"}
+    </button>
+
+    <button
+        onClick={() => navigate("/outputs")}
+        style={{
+            padding: "8px 16px",
+            border: "1px solid black",
+            borderRadius: 6,
+            fontWeight: 600,
+            cursor: "pointer",
+        }}
+    >
+        Go to Outputs
+    </button>
+</div>
         </div>
+        
     );
 }
 
@@ -240,7 +255,7 @@ function QuarterSection(props: {
     return (
         <div
             style={{
-                border: "1px solid #ccc",
+                border: "1px solid #070707",
                 borderRadius: 10,
                 padding: 16,
                 marginTop: 16,
@@ -292,7 +307,7 @@ function QuarterSection(props: {
                 style={{
                     marginTop: 14,
                     paddingTop: 12,
-                    borderTop: "1px solid #eee",
+                    borderTop: "1px solid #050505",
                 }}
             >
                 <b>Quarter Spend Preview:</b>{" "}
@@ -343,5 +358,7 @@ function Row(props: {
                 onChange={(e) => props.onPaid(e.target.value)}
             />
         </div>
-    );
+    ); 
+    
 }
+
