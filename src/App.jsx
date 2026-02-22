@@ -1,94 +1,81 @@
-import React from "react";
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Link,
-    useNavigate,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// ✅ Import your Inputs page
-// If your file is exactly: src/Pages/Inputs/InputsPage.tsx
 import InputsPage from "./Pages/Inputs/InputsPage";
+import MyCompany from "./Pages/Inputs/MyCompany.jsx";
 
-// Simple Home page with button → Inputs
-function Home() {
-    const navigate = useNavigate();
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import Marquee from "./components/Marquee.jsx";
+import Services from "./components/Services.jsx";
+import Vision from "./components/Vision.jsx";
+import LoginModal from "./components/LoginModal.jsx";
 
+// Optional Outputs placeholder
+function Outputs() {
     return (
-        <div style={styles.page}>
-            <div style={styles.card}>
-                <h1 style={{ marginTop: 0 }}>EcoForecast</h1>
-                <p style={{ opacity: 0.85 }}>
-                    Demo: Estimate clinic sustainability cost impact (quarterly
-                    inputs).
-                </p>
-
-                <button
-                    style={styles.primaryBtn}
-                    onClick={() => navigate("/inputs")}
-                >
-                    Go to Inputs
-                </button>
-
-                {/* Optional: link version */}
-                <div style={{ marginTop: 12 }}>
-                    <Link to="/inputs">Or click here to open Inputs</Link>
-                </div>
+        <div className="min-h-screen bg-[#D9E4D7] text-[#0c120b] grid place-items-center p-6">
+            <div className="max-w-lg w-full rounded-2xl border border-black/10 bg-white/40 p-6">
+                <h2 className="text-2xl font-black">Outputs</h2>
+                <p className="mt-2 text-[#324D3E]/80">Placeholder for now.</p>
             </div>
         </div>
     );
 }
 
-// Placeholder Outputs (you can replace later)
-function Outputs() {
+function Home({ onOpenLogin }) {
     return (
-        <div style={styles.page}>
-            <div style={styles.card}>
-                <h2 style={{ marginTop: 0 }}>Outputs</h2>
-                <p>Placeholder for now.</p>
-                <Link to="/inputs">Back to Inputs</Link>
-            </div>
+        <div className="min-h-screen bg-[#D9E4D7]">
+            <Navbar onOpenLogin={onOpenLogin} />
+
+            <main>
+                <Hero />
+                <Marquee />
+                <Services />
+                <Vision />
+            </main>
+
+            <footer className="border-t border-black/10 bg-[#D9E4D7]">
+                <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div className="text-sm text-[#324D3E]/80">
+                        ©️ {new Date().getFullYear()} EcoForecast — All rights
+                        reserved.
+                    </div>
+                    <div className="text-sm text-[#324D3E]/80">
+                        Built with React + Tailwind
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }
 
 export default function App() {
+    const [loginOpen, setLoginOpen] = useState(false);
+
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/inputs" element={<InputsPage />} />
-            <Route path="/outputs" element={<Outputs />} />
-        </Routes>
+        <>
+            <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Home onOpenLogin={() => setLoginOpen(true)} />}
+                />
+
+                <Route
+                    path="/company"
+                    element={
+                        <div className="min-h-screen bg-[#D9E4D7]">
+                            <Navbar onOpenLogin={() => setLoginOpen(true)} />
+                            <MyCompany />
+                        </div>
+                    }
+                />
+
+                <Route path="/inputs" element={<InputsPage />} />
+                <Route path="/outputs" element={<Outputs />} />
+            </Routes>
+        </>
     );
 }
-
-const styles = {
-    page: {
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 24,
-        background: "linear-gradient(135deg, #0b1220, #0f3b2f)",
-        color: "white",
-    },
-    card: {
-        width: "100%",
-        maxWidth: 720,
-        padding: 24,
-        borderRadius: 16,
-        background: "rgba(0,255,0,0.08)",
-        border: "1px solid rgba(255,255,255,0.15)",
-        backdropFilter: "blur(10px)",
-    },
-    primaryBtn: {
-        marginTop: 12,
-        padding: "12px 16px",
-        borderRadius: 10,
-        border: "none",
-        cursor: "pointer",
-        fontWeight: 700,
-        color: "black",
-    },
-};

@@ -7,6 +7,9 @@ import type {
 
 const BASE_URL = "http://localhost:5000";
 
+// --------------------
+// 1 Quarter Save/Fetch
+// --------------------
 export async function saveInputsToMongo(
     inputs: QuarterlyInputs,
     year?: number
@@ -39,6 +42,7 @@ export async function saveInputsToMongo(
     if (!res.ok || !data.ok) {
         throw new Error(data.error || "Failed to save inputs");
     }
+
     return data.id as string; // Mongo _id string
 }
 
@@ -64,6 +68,9 @@ export async function fetchInputsById(id: string): Promise<InputsDoc> {
     return data.data as InputsDoc;
 }
 
+// --------------------
+// 4 Quarter Save/Fetch
+// --------------------
 export async function save4QuartersToMongo(
     company: string,
     quarters: QuarterInputs,
@@ -103,10 +110,34 @@ export async function save4QuartersToMongo(
     });
 
     const data = await res.json().catch(() => ({}));
-
     if (!res.ok || !data.ok) {
         throw new Error(data.error || "Failed to save 4-quarter inputs");
     }
 
     return data.id as string;
+}
+
+// Optional helpers (only keep if your backend supports them)
+export async function fetchLatest4Q(): Promise<InputsDoc4Q | null> {
+    const res = await fetch(`${BASE_URL}/api/inputs/four-quarter/latest`);
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+        throw new Error(
+            data.error || "Failed to fetch latest 4-quarter inputs"
+        );
+    }
+
+    return data.data as InputsDoc4Q | null;
+}
+
+export async function fetch4QById(id: string): Promise<InputsDoc4Q> {
+    const res = await fetch(`${BASE_URL}/api/inputs/four-quarter/${id}`);
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Failed to fetch 4-quarter inputs");
+    }
+
+    return data.data as InputsDoc4Q;
 }
