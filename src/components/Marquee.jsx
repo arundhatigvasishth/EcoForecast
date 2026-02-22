@@ -32,4 +32,4 @@ export default function Marquee() {
       `}</style>
     </div>
   );
-}
+} 
