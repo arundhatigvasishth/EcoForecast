@@ -1,4 +1,4 @@
-import type { QuarterlyInputs } from "./types";
+import type { QuarterlyInputs } from "./Types";
 
 export function toNumberOrNull(v: number | ""): number | null {
     if (v === "") return null;

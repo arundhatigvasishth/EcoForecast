@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import leaf from "../assets/leaf.png";
 
-export default function Navbar({ onOpenLogin }) {
+export default function Navbar({ onOpenLogin, isLoggedIn, setIsLoggedIn }) {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -39,12 +39,14 @@ export default function Navbar({ onOpenLogin }) {
                 </Link>
               )}
 
-              <Link
-                to="/company"
-                className="hover:underline underline-offset-8"
-              >
-                My Company
-              </Link>
+              {isLoggedIn && (
+                <Link
+                  to="/company"
+                  className="hover:underline underline-offset-8"
+                >
+                  My Company
+                </Link>
+              )}
             </nav>
 
             {/* Center Brand */}
@@ -57,24 +59,33 @@ export default function Navbar({ onOpenLogin }) {
               </Link>
             </div>
 
-            {/* Right Login Button */}
+            {/* Right Button */}
             <div className="justify-self-end">
-              <button
-                onClick={onOpenLogin}
-                className="inline-flex items-center gap-3 text-sm text-[#324D3E] hover:text-black transition"
-              >
-                <span className="hidden sm:inline">
-                  Login / Sign up
-                </span>
+              {!isLoggedIn ? (
+                <button
+                  onClick={onOpenLogin}
+                  className="inline-flex items-center gap-3 text-sm text-[#324D3E] hover:text-black transition"
+                >
+                  <span className="hidden sm:inline">
+                    Login / Sign up
+                  </span>
 
-                <span className="inline-flex h-11 w-11 rounded-full bg-[#E8EFE6] border border-black/10 items-center justify-center overflow-hidden transition hover:scale-105 hover:shadow-md">
-                  <img
-                    src={leaf}
-                    alt="Leaf"
-                    className="h-16 w-16 object-contain"
-                  />
-                </span>
-              </button>
+                  <span className="inline-flex h-11 w-11 rounded-full bg-[#E8EFE6] border border-black/10 items-center justify-center overflow-hidden transition hover:scale-105 hover:shadow-md">
+                    <img
+                      src={leaf}
+                      alt="Leaf"
+                      className="h-16 w-16 object-contain"
+                    />
+                  </span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsLoggedIn(false)}
+                  className="text-sm text-[#324D3E] hover:underline underline-offset-4"
+                >
+                  Sign Out
+                </button>
+              )}
             </div>
 
           </div>

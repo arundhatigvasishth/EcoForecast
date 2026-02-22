@@ -11,12 +11,12 @@ export default function Hero() {
       {/* Reduced overlay for better image visibility */}
       <div className="absolute inset-0 bg-[#D9E4D7]/40" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-16 md:pt-20 md:pb-20">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pt-16 pb-16 md:pt-20 md:pb-20 text-black">
         <div className="grid gap-10 md:grid-cols-2 items-start">
           
           {/* Left: Hook */}
           <div className="self-start">
-            <h1 className="font-black tracking-tight leading-[0.95] text-[clamp(2.6rem,6vw,4.6rem)] text-[#0c120b]">
+            <h1 className="font-black tracking-tight leading-[0.95] text-[clamp(2.6rem,6vw,4.6rem)]">
               Financial Forecasting
               <br />
               for a greener
@@ -27,23 +27,31 @@ export default function Hero() {
 
           {/* Right: Goals */}
           <div className="self-start">
-            <h2 className="text-2xl font-black text-[#0c120b]">
+            <h2 className="text-2xl font-black ">
               Our Goals
             </h2>
 
-            <p className="mt-4 text-[#2B4336]/90 max-w-md leading-relaxed">
-              Sustainable transformation shouldn't be reserved for organizations
-              with large audit budgets. Yet for many small and medium-sized
-              businesses, carbon-related data lives in scattered receipts,
-              invoices, and operational logs, making it difficult to identify
-              the areas that truly matter.
+            <p className="mt-4 max-w-md leading-relaxed">
+              How can small and medium-sized businesses{" "}
+              <span className="font-extrabold">go green</span> without paying for{" "}
+              <span className="font-extrabold">
+                expensive sustainability audits
+              </span>, especially when their carbon data is buried in{" "}
+              <span className="font-extrabold">
+                scattered receipts, utility bills, and logistics logs
+              </span>?
             </p>
 
-            <p className="mt-4 text-[#2B4336]/90 max-w-md leading-relaxed">
-              EcoForecast centralizes that information, transforms it into
-              structured financial projections, and empowers teams to pursue
-              sustainability with clarity and confidence and without the cost
-              and complexity of traditional third-party audits.
+            <p className="mt-4 max-w-md leading-relaxed">
+              EcoForecast turns scattered data into{" "}
+              <span className="font-extrabold">
+                clear financial projections
+              </span>, enabling{" "}
+              <span className="font-extrabold">
+                smarter sustainability
+              </span>{" "}
+              decisions without{" "}
+              <span className="font-extrabold">costly</span> third-party audits.
             </p>
           </div>
 
