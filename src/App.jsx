@@ -111,7 +111,7 @@ export default function App() {
 }
 =======
                 <Route path="/inputs" element={<InputsPage />} />
-                <Route path="/outputs" element={<OutputsPage />} />
+                <Route path="/outputs/:inputId" element={<OutputsPage />} />
             </Routes>
         </>
     );
