@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import leaf from "../assets/leaf.png";
 
 export default function Navbar({ onOpenLogin }) {
   const [scrolled, setScrolled] = useState(false);
@@ -18,14 +19,15 @@ export default function Navbar({ onOpenLogin }) {
     <header className="sticky top-0 z-40">
       <div
         className={[
-          "transition-all",
+          "transition-all duration-300",
           "bg-[#D9E4D7]",
-          scrolled ? "border-b border-black/10" : "",
+          scrolled ? "border-b border-black/10 shadow-sm" : "",
         ].join(" ")}
       >
         <div className="mx-auto max-w-6xl px-6 py-4">
           <div className="grid grid-cols-3 items-center">
-            {/* Left nav */}
+            
+            {/* Left Navigation */}
             <nav className="flex items-center gap-6 text-sm text-[#324D3E]">
               {isHome ? (
                 <a href="#home" className="hover:underline underline-offset-8">
@@ -45,7 +47,7 @@ export default function Navbar({ onOpenLogin }) {
               </Link>
             </nav>
 
-            {/* Center brand */}
+            {/* Center Brand */}
             <div className="justify-self-center">
               <Link
                 to="/"
@@ -55,19 +57,26 @@ export default function Navbar({ onOpenLogin }) {
               </Link>
             </div>
 
-            {/* Right actions */}
+            {/* Right Login Button */}
             <div className="justify-self-end">
               <button
                 onClick={onOpenLogin}
-                className="text-sm text-[#324D3E] hover:text-black inline-flex items-center gap-2"
+                className="inline-flex items-center gap-3 text-sm text-[#324D3E] hover:text-black transition"
               >
-                <span className="hidden sm:inline">Login / Sign up</span>
-                <span className="inline-block h-9 w-9 rounded-full border border-black/15 bg-white/40 grid place-items-center">
-                  {/* simple icon */}
-                  <span className="h-2 w-2 rounded-full bg-[#324D3E]" />
+                <span className="hidden sm:inline">
+                  Login / Sign up
+                </span>
+
+                <span className="inline-flex h-11 w-11 rounded-full bg-[#E8EFE6] border border-black/10 items-center justify-center overflow-hidden transition hover:scale-105 hover:shadow-md">
+                  <img
+                    src={leaf}
+                    alt="Leaf"
+                    className="h-16 w-16 object-contain"
+                  />
                 </span>
               </button>
             </div>
+
           </div>
         </div>
       </div>
