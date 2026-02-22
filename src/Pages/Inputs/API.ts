@@ -3,7 +3,7 @@ import type {
     QuarterlyInputs,
     InputsDoc4Q,
     QuarterInputs,
-} from "./types";
+} from "./Types";
 
 const BASE_URL = "http://localhost:5000";
 

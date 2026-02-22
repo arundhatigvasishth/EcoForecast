@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
 export default function Breakdown() {
     return (
@@ -17,4 +17,4 @@ export default function Breakdown() {
             </div>
         </div>
     );
-}
+}*/

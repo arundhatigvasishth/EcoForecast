@@ -12,6 +12,11 @@ import {
 const formatMoney = (value) =>
     `$${Number(value).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
 
+const formatLabel = (value) => {
+    if (!value) return "";
+    return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
 export default function ComparisonGraph({ data }) {
     return (
         <div className="bg-white p-6 rounded-2xl shadow">
@@ -20,11 +25,21 @@ export default function ComparisonGraph({ data }) {
             </h2>
 
             <ResponsiveContainer width="100%" height={400}>
-                <BarChart data={data}>
+                <BarChart data={data} margin={{ bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" />
+                    <XAxis
+                        dataKey="category"
+                        tickFormatter={formatLabel}
+                        interval={0}
+                        angle={-25}
+                        textAnchor="end"
+                        tick={{ fontSize: 12 }}
+                    />
                     <YAxis tickFormatter={formatMoney} />
-                    <Tooltip formatter={formatMoney} />
+                    <Tooltip
+                        formatter={formatMoney}
+                        labelFormatter={formatLabel}
+                    />
                     <Legend />
 
                     <Bar
