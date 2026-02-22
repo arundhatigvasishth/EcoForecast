@@ -51,7 +51,7 @@ export default function Navbar({ onOpenLogin }) {
             <div className="justify-self-center">
               <Link
                 to="/"
-                className="text-lg font-black tracking-tight text-[#324D3E]"
+                className="text-3xl font-black tracking-tight text-[#324D3E]"
               >
                 EcoForecast
               </Link>
