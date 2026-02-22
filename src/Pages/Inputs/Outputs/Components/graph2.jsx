@@ -1,30 +1,44 @@
-import React from "react";
+import {
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    Tooltip,
+    CartesianGrid,
+    ResponsiveContainer,
+    Legend,
+} from "recharts";
 
-export default function ComparisonGraph() {
+const formatMoney = (value) =>
+    `$${Number(value).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+
+export default function ComparisonGraph({ data }) {
     return (
-        <div className="rounded-2xl bg-white/60 p-6 border border-black/10 shadow-sm">
-            <h2 className="text-xl font-black mb-6">
-                Cost Comparison (Traditional vs Sustainable)
+        <div className="bg-white p-6 rounded-2xl shadow">
+            <h2 className="text-xl font-bold mb-4">
+                Cost Projection (Traditional vs Sustainable)
             </h2>
 
-            <div className="flex justify-around items-end h-40">
+            <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="year" />
+                    <YAxis tickFormatter={formatMoney} />
+                    <Tooltip formatter={formatMoney} />
+                    <Legend />
 
-                <div className="flex flex-col items-center">
-                    <div className="bg-red-400 w-16 h-32 rounded-t-xl" />
-                    <span className="mt-2 text-sm">Traditional</span>
-                </div>
-
-                <div className="flex flex-col items-center">
-                    <div className="bg-green-500 w-16 h-20 rounded-t-xl" />
-                    <span className="mt-2 text-sm">Sustainable</span>
-                </div>
-
-            </div>
-
-            <div className="text-sm text-[#324D3E]/70 mt-4 text-center">
-                Traditional: Electricity, Water, Fuel <br />
-                Sustainable: Solar, Water Recycling, EVs
-            </div>
+                    <Bar
+                        dataKey="Traditional"
+                        fill="#d9534f"
+                        isAnimationActive={true}
+                    />
+                    <Bar
+                        dataKey="Sustainable"
+                        fill="#2e8b57"
+                        isAnimationActive={true}
+                    />
+                </BarChart>
+            </ResponsiveContainer>
         </div>
     );
 }
