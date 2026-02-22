@@ -8,9 +8,8 @@ export default function Vision() {
           Our Vision
         </h2>
         <p className="mt-4 max-w-2xl text-[#324D3E]/80 leading-relaxed">
-          We want to help businesses go greener by making sustainability choices
-          easier to understand financially — so teams can plan smarter, reduce waste,
-          and grow responsibly.
+          EcoForecast was built to bridge the gap between sustainability initiatives and financial decision-making. Too often, organizations are forced to choose between environmental responsibility and budget certainty. We believe you should never have to guess the financial impact of smarter operational choices.
+          By transforming real quarterly cost and usage data into structured forecasts, we provide leaders with the clarity they need to plan ahead, reduce uncertainty, and operate more efficiently. Our platform turns sustainability from a risk into a measurable opportunity.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">

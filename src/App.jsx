@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import InputsPage from "./Pages/Inputs/InputsPage";
 import MyCompany from "./Pages/Inputs/MyCompany.jsx";
+// import OutputsPage from "./Pages/Outputs/OutputsPage";
 
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";

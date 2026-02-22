@@ -5,18 +5,29 @@ export default function Marquee() {
 
   return (
     <div className="border-y border-black/10 bg-[#BECFBB] overflow-hidden">
-      <div className="animate-[marquee_16s_linear_infinite] whitespace-nowrap py-3 text-sm font-semibold text-[#324D3E]">
-        <span className="mx-8">{text}</span>
-        <span className="mx-8">{text}</span>
-        <span className="mx-8">{text}</span>
-        <span className="mx-8">{text}</span>
-        <span className="mx-8">{text}</span>
+      <div className="flex w-max animate-marquee whitespace-nowrap py-3 text-sm font-semibold text-[#324D3E]">
+        {/* First set */}
+        {[...Array(8)].map((_, i) => (
+          <span key={`first-${i}`} className="mx-8">
+            {text}
+          </span>
+        ))}
+
+        {/* Duplicate set for seamless loop */}
+        {[...Array(8)].map((_, i) => (
+          <span key={`second-${i}`} className="mx-8">
+            {text}
+          </span>
+        ))}
       </div>
 
       <style>{`
         @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
       `}</style>
     </div>
