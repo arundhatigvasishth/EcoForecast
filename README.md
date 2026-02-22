@@ -1,17 +1,18 @@
-🌱 EcoForecast:
+🌱 EcoForecast
 
 EcoForecast is a financial simulation platform that helps small and medium-sized businesses (SMEs) evaluate whether sustainable investments are economically viable before committing capital. Instead of treating sustainability as a moral gamble, EcoForecast treats it like an investment decision, grounded in data and risk modeling.
 
-🔍 The Problem:
+🔍 The Problem
 
 SMEs often want to transition to greener operations, but:
+
 Carbon audits are expensive 💸
 
 Consultants are often out of reach 🏢
 
 Operational data is scattered across bills, receipts, and invoices 📄
 
-Sustainability often feels like a leap of faith rather than a financially grounded decision.
+Sustainability often feels like a leap of faith rather than a financially grounded decision
 
 EcoForecast replaces that leap with a model.
 
@@ -74,10 +75,9 @@ Designing a clean and intuitive interface ✨
 Creating a product that feels viable beyond the hackathon 🌱
 
 💡 What We Learned
+
 Building & integrating a full-stack app under tight deadlines ⏱️
 
 Modeling financial uncertainty responsibly 📈
 
 Translating ESG goals into measurable metrics 📏
-
-Coordinating effectively as a team under pressure
