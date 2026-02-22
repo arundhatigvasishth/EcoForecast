@@ -3,14 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import InputsPage from "./Pages/Inputs/InputsPage";
 import MyCompany from "./Pages/Inputs/MyCompany.jsx";
-// import OutputsPage from "./Pages/Outputs/OutputsPage";
+import OutputsPage from "./Pages/Inputs/Outputs/OutputPage";
 
-import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import Marquee from "./components/Marquee.jsx";
-import Services from "./components/Services.jsx";
-import Vision from "./components/Vision.jsx";
-import LoginModal from "./components/LoginModal.jsx";
+import Navbar from "./Components/Navbar.jsx";
+import Hero from "./Components/Hero.jsx";
+import Marquee from "./Components/Marquee.jsx";
+import Services from "./Components/Services.jsx";
+import Vision from "./Components/Vision.jsx";
+import LoginModal from "./Components/LoginModal.jsx";
 
 // Optional Outputs placeholder
 function Outputs() {
@@ -75,7 +75,7 @@ export default function App() {
                 />
 
                 <Route path="/inputs" element={<InputsPage />} />
-                <Route path="/outputs" element={<Outputs />} />
+                <Route path="/outputs" element={<OutputsPage />} />
             </Routes>
         </>
     );
