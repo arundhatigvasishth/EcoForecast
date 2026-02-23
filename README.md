@@ -81,3 +81,6 @@ Building & integrating a full-stack app under tight deadlines ⏱️
 Modeling financial uncertainty responsibly 📈
 
 Translating ESG goals into measurable metrics 📏
+
+
+Created by: Arundhati Vasishth, Dedeepya Pidaparthi, Manya Mehta, Rashi Jain, Rupsa Bose and Sally Vakhtangishvili
