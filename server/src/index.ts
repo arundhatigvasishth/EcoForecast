@@ -6,8 +6,10 @@ import { MongoClient, ObjectId } from "mongodb";
 
 import * as calcSetup from "./calculations/calcSetup";
 import * as calcOutputs from "./calculations/calcOutputs";
+import { debug } from "util";
 
 console.log("LOADED!!!");
+console.log("GROQ KEY:", process.env.GROQ_API_KEY?.slice(0, 10));
 
 const app = express();
 app.use(cors());
@@ -382,7 +384,54 @@ async function start() {
             latestInput: docs[0] ?? null,
         });
     });
-    // ✅ START LISTENING (THIS WAS MISSING)
+    // ---------------------------
+    // Gemini AI Chat
+    // POST /api/chat
+    // ---------------------------
+    app.post("/api/chat", async (req: Request, res: Response) => {
+        try {
+            const { message, context } = req.body;
+            if (!message) {
+                return res
+                    .status(400)
+                    .json({ ok: false, error: "Message is required" });
+            }
+
+            const Groq = (await import("groq-sdk")).default;
+            const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
+            const completion = await groq.chat.completions.create({
+                model: "llama-3.3-70b-versatile",
+                messages: [
+                    {
+                        role: "system",
+                        content: `You are EcoAdvisor, an AI assistant embedded in EcoForecast — a financial simulation platform for SMEs evaluating sustainability investments. You help users understand their simulation results, break-even timelines, carbon savings, and green transition options. Be concise, practical, and financially literate. Keep responses to 3-4 sentences unless asked for more.${
+                            context
+                                ? ` Current simulation data: ${JSON.stringify(
+                                      context
+                                  )}`
+                                : ""
+                        }`,
+                    },
+                    { role: "user", content: message },
+                ],
+            });
+
+            const reply =
+                completion.choices[0]?.message?.content ??
+                "No response generated.";
+            return res.json({ ok: true, reply });
+        } catch (err: any) {
+            console.error("Groq error:", err);
+            return res.status(500).json({
+                ok: false,
+                error: "AI request failed",
+                detail: err?.message,
+            });
+        }
+    });
+
+    // ✅ START LISTENING
     app.listen(port, () => {
         console.log(`✅ Server running on http://localhost:${port}`);
     });

@@ -4,7 +4,7 @@ import BreakEven from "./Components/BreakEven";
 import InvestmentGraph from "./Components/graph1";
 import ComparisonGraph from "./Components/graph2";
 import CarbonFootprint from "./Components/carbonFootPrintBar";
-import AISummaryButton from "./Components/AISummaryButton";
+import EcoAdvisor from "./Components/EcoAdvisor";
 
 const OutputsPage = () => {
     const { id } = useParams();
@@ -114,7 +114,14 @@ const OutputsPage = () => {
                 {carbonData.length > 0 && <CarbonFootprint data={carbonData} />}
 
                 {/* AI Summary */}
-                <AISummaryButton />
+                <EcoAdvisor
+                    context={{
+                        breakEven,
+                        investmentVsYear,
+                        costComparisonYear1,
+                        carbonYear1,
+                    }}
+                />
             </div>
         </div>
     );
