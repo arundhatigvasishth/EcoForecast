@@ -13,7 +13,7 @@ SMEs want to go green, but face real barriers:
 -   Carbon audits are expensive and inaccessible 💸
 -   Sustainability consultants are out of reach for most small businesses 🏢
 -   Operational data is scattered across bills, receipts, and invoices 📄
--   The financial impact of green investments is unclear and risky
+-   The financial impact of green investments is unclear and risky ❓
 
 **EcoForecast replaces the leap of faith with a model.**
 
