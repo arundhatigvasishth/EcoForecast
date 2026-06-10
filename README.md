@@ -194,8 +194,19 @@ EcoAdvisor is context-aware — it receives your simulation results automaticall
 
 ---
 
+## 📈 Future Improvements
+
+- Add industry-specific sustainability benchmarks
+- Allow users to upload utility bills and invoices directly
+- Expand the simulation model with more upgrade categories
+- Add scenario comparison for different investment levels
+- Improve EcoAdvisor with more detailed recommendation logic
+- Generate downloadable reports for business owners
+
+---  
+
 ## 👥 Team
 
 Built at a hackathon by a team passionate about making sustainability financially accessible for small businesses.
-
+This project was developed collaboratively across product ideation, frontend design, backend implementation, financial modeling, AI integration, testing, and presentation.
 ---
