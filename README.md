@@ -209,4 +209,5 @@ EcoAdvisor is context-aware — it receives your simulation results automaticall
 
 Built at a hackathon by a team passionate about making sustainability financially accessible for small businesses.
 This project was developed collaboratively across product ideation, frontend design, backend implementation, financial modeling, AI integration, testing, and presentation.
+
 ---
